@@ -1,0 +1,2 @@
+use_frameworks!
+pod 'Reveal-iOS-SDK', :configurations => ['Debug']
