@@ -21,6 +21,7 @@ class JYTagViewCell: UIView {
     
     convenience init(identifier: String) {
         self.init()
+        backgroundColor = UIColor.whiteColor()
         self.identifier = identifier
         self.addSubview(textLabel)
     }

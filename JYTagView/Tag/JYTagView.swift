@@ -241,6 +241,8 @@ class JYTagView: UIScrollView {
     override func layoutSubviews() {
         super.layoutSubviews()
         
+        self.backgroundColor = UIColor.lightGrayColor();
+        
         let numberOfCells = self.cellFrames.count
         
         for i in 0...(numberOfCells - 1) {
@@ -261,7 +263,7 @@ class JYTagView: UIScrollView {
                 cell!.frame = cellFrame
                 cell!.layer.borderWidth = 2.0
                 cell!.layer.borderColor = UIColor.blackColor().CGColor
-                cell!.clipsToBounds = true
+//                cell!.clipsToBounds = true
                 cell!.layer.cornerRadius = 8.0
                 self.addSubview(cell!)
 

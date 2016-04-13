@@ -119,14 +119,16 @@ extension ViewController {
         
         let model = self.tagModels[index]
         
-        let alertView = UIAlertController.init(title: "提示", message: "点击了\(model.tagname!)", preferredStyle:.Alert)
-
-        let cancelAction = UIAlertAction.init(title: "取消", style: .Cancel, handler: nil)
-        
-        alertView.addAction(cancelAction)
-        
-        self.presentViewController(alertView, animated: true, completion: nil)
-        
+        if #available(iOS 8.0, *) {
+            let alertView = UIAlertController.init(title: "提示", message: "点击了\(model.tagname!)", preferredStyle:.Alert)
+            let cancelAction = UIAlertAction.init(title: "取消", style: .Cancel, handler: nil)
+            
+            alertView.addAction(cancelAction)
+            
+            self.presentViewController(alertView, animated: true, completion: nil)
+        } else {
+            // Fallback on earlier versions
+        }        
     }
     
     func tagView(tagView:JYTagView, maginForType type:JYTagviewMarginType){
