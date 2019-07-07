@@ -23,7 +23,7 @@ extension UIImage{
         return self
     }
     
-    func imageWithSize(size:CGSize, radius:CGFloat, contentMode:UIViewContentMode) -> UIImage {
+    func imageWithSize(size:CGSize, radius:CGFloat, contentMode:UIView.ContentMode) -> UIImage {
         
         return self
     }
@@ -38,12 +38,12 @@ extension UIImage{
         return self.init()
     }
     
-    class func imageWithSize(size:CGSize, radius:CGFloat, borderColor:UIColor, borderWidth:CGFloat, backgroundColor:UIColor, backgroundImage:UIImage, contentMode:UIViewContentMode) -> UIImage{
+    class func imageWithSize(size:CGSize, radius:CGFloat, borderColor:UIColor, borderWidth:CGFloat, backgroundColor:UIColor, backgroundImage:UIImage, contentMode:UIView.ContentMode) -> UIImage{
         
         return self.init()
     }
     
-    class func imageWithSize(size:CGSize,radius:Radius, borderColor:UIColor, borderWidth:CGFloat, backgroundColor:UIColor, backgroundImage:UIImage, contentMode:UIViewContentMode) -> UIImage{
+    class func imageWithSize(size:CGSize,radius:Radius, borderColor:UIColor, borderWidth:CGFloat, backgroundColor:UIColor, backgroundImage:UIImage, contentMode:UIView.ContentMode) -> UIImage{
         
         return self.init()
     }

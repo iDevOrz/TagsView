@@ -14,14 +14,14 @@ class JYTagViewCell: UIView {
     
     var textLabel:UILabel = {
         let label = UILabel()
-        label.textAlignment = NSTextAlignment.Center
-        label.font = UIFont.systemFontOfSize(15)
+        label.textAlignment = NSTextAlignment.center
+        label.font = UIFont.systemFont(ofSize: 15)
         return label
     }()
     
     convenience init(identifier: String) {
         self.init()
-        backgroundColor = UIColor.whiteColor()
+        backgroundColor = .white
         self.identifier = identifier
         self.addSubview(textLabel)
     }

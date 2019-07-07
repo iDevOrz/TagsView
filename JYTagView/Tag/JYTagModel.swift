@@ -10,20 +10,24 @@ import UIKit
 
 class JYTagModel: NSObject {
     
-    var lock:String?
+    @objc var lock:String?
     
-    var tag_fatherid:String?
+    @objc var tag_fatherid:String?
     
-    var tagname:String?
+    @objc var tagname:String?
     
     class func tag(dict:[String:AnyObject]) -> JYTagModel{
         let tag = JYTagModel()
-        tag.setValuesForKeysWithDictionary(dict)
+        tag.setValuesForKeys(dict)
         return tag;
     }
     
-    override func valueForUndefinedKey(key: String) -> AnyObject? {
+    override func value(forUndefinedKey key: String) -> Any? {
         return "什么鬼~?"
+    }
+    
+    override func setValue(_ value: Any?, forUndefinedKey key: String) {
+
     }
     
 }

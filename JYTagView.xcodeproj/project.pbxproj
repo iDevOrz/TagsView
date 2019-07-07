@@ -10,7 +10,6 @@
 		3A8EC77071FA66F0FCF2FFB8 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0B14D882491E136B425E093 /* Pods.framework */; };
 		4521EC281CB162FD00A0DA5B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4521EC271CB162FD00A0DA5B /* AppDelegate.swift */; };
 		4521EC2A1CB162FD00A0DA5B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4521EC291CB162FD00A0DA5B /* ViewController.swift */; };
-		4521EC2D1CB162FD00A0DA5B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4521EC2B1CB162FD00A0DA5B /* Main.storyboard */; };
 		4521EC2F1CB162FD00A0DA5B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4521EC2E1CB162FD00A0DA5B /* Assets.xcassets */; };
 		4521EC321CB162FD00A0DA5B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4521EC301CB162FD00A0DA5B /* LaunchScreen.storyboard */; };
 		4521EC3D1CB162FD00A0DA5B /* JYTagViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4521EC3C1CB162FD00A0DA5B /* JYTagViewTests.swift */; };
@@ -45,7 +44,6 @@
 		4521EC241CB162FD00A0DA5B /* JYTagView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JYTagView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4521EC271CB162FD00A0DA5B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4521EC291CB162FD00A0DA5B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		4521EC2C1CB162FD00A0DA5B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4521EC2E1CB162FD00A0DA5B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4521EC311CB162FD00A0DA5B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4521EC331CB162FD00A0DA5B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -119,7 +117,6 @@
 				4521EC551CB177CD00A0DA5B /* Tag */,
 				4521EC271CB162FD00A0DA5B /* AppDelegate.swift */,
 				4521EC291CB162FD00A0DA5B /* ViewController.swift */,
-				4521EC2B1CB162FD00A0DA5B /* Main.storyboard */,
 				4521EC2E1CB162FD00A0DA5B /* Assets.xcassets */,
 				4521EC301CB162FD00A0DA5B /* LaunchScreen.storyboard */,
 				4521EC331CB162FD00A0DA5B /* Info.plist */,
@@ -241,7 +238,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0730;
+				LastUpgradeCheck = 1020;
 				ORGANIZATIONNAME = "张建宇";
 				TargetAttributes = {
 					4521EC231CB162FD00A0DA5B = {
@@ -262,7 +259,7 @@
 			};
 			buildConfigurationList = 4521EC1F1CB162FD00A0DA5B /* Build configuration list for PBXProject "JYTagView" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
@@ -288,7 +285,6 @@
 				454145841CB8C7B400F64225 /* tags.json in Resources */,
 				4521EC321CB162FD00A0DA5B /* LaunchScreen.storyboard in Resources */,
 				4521EC2F1CB162FD00A0DA5B /* Assets.xcassets in Resources */,
-				4521EC2D1CB162FD00A0DA5B /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -403,14 +399,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		4521EC2B1CB162FD00A0DA5B /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				4521EC2C1CB162FD00A0DA5B /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		4521EC301CB162FD00A0DA5B /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -426,18 +414,29 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -471,18 +470,29 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -501,6 +511,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -511,10 +522,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = JYTagView/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = cn.Jatstar.JYTagView;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -524,10 +536,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = JYTagView/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = cn.Jatstar.JYTagView;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};

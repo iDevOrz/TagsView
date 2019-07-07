@@ -68,7 +68,7 @@ class JYTagView: UIScrollView {
     /** 自定义的缓存池*/
     var reusableCells:Set = Set<JYTagViewCell>()
     
-    var mainScreenSize = UIScreen.mainScreen().bounds.size
+    var mainScreenSize = UIScreen.main.bounds.size
     
     var cellNumbers:NSInteger = 0
     
@@ -83,9 +83,9 @@ class JYTagView: UIScrollView {
         
         let headerView = self.headerViewInTagview()
         let footerView = self.footerViewInTagview()
-        self.cellNumbers = (self.dataSource_JY?.numberOfCellsInTagView(self))!
+        self.cellNumbers = (self.dataSource_JY?.numberOfCellsInTagView(tagView: self))!
         
-        self.caculateWithNumberOfCells(self.cellNumbers, headerView: headerView, footerView: footerView)
+        self.caculateWithNumberOfCells(count: self.cellNumbers, headerView: headerView, footerView: footerView)
         if headerView != nil {
             self.addSubview(headerView!)
         }
@@ -104,7 +104,7 @@ class JYTagView: UIScrollView {
             /// 每一行最大的X 换行置0
         var maxX:CGFloat = 0.0
             /// cell高度
-        let cellH = self.heightAtIndex(0)
+        let cellH = self.heightAtIndex(index: 0)
             /// 有效宽度
         let effectiveW = self.mainScreenSize.width - 2 * kJYTagMinLeftMargin
             /// 每一行开始的位置
@@ -128,7 +128,7 @@ class JYTagView: UIScrollView {
         
         for i in 0...(count - 1) {
             
-            let textW = self.widthAtIndex(i)
+            let textW = self.widthAtIndex(index: i)
             
             if i == 0 {
             
@@ -151,8 +151,7 @@ class JYTagView: UIScrollView {
                 
                 let leftMargin = (effectiveW - realW ) / 2.0
                 
-                for j in beginR.stride(to: endR + 1, by: +1 ) {
-                    
+                for j in beginR ... endR{
                     let cellW = tmpArr[j]
                     
                     var cellX:CGFloat = 0.0
@@ -160,25 +159,21 @@ class JYTagView: UIScrollView {
                     if j == beginR {
                         
                         cellX = leftMargin + kJYTagMiddleMargin
-                    
+                        
                     } else {
                         
                         let frame = self.cellFrames[j - 1]
                         
-                        cellX = kJYTagMiddleMargin + CGRectGetMaxX(frame)
+                        cellX = kJYTagMiddleMargin + frame.maxX
                         
                     }
                     
                     let cellY = kJYTagTopRowMargin + (cellH + kJYTagTopRowMargin) * CGFloat(numberOfRows) + headerViewH
                     
-                    let frame = CGRectMake(cellX, cellY, cellW, cellH)
-                    
-//                    print(frame)
-                    
+                    let frame = CGRect(x: cellX, y: cellY, width: cellW, height: cellH)
                     self.cellFrames.append(frame)
-                    
                 }
-                
+
                 beginR = i
                 
                 numberOfRows = numberOfRows + 1
@@ -194,7 +189,7 @@ class JYTagView: UIScrollView {
 
         var headerViewFrame = headerView!.frame
         
-        headerViewFrame.origin = CGPointZero
+        headerViewFrame.origin = .zero
         
         if headerViewFrame.size.width > self.mainScreenSize.width {
             let h = self.mainScreenSize.width * headerViewFrame.size.height / headerViewFrame.size.width
@@ -234,14 +229,14 @@ class JYTagView: UIScrollView {
     
     
     private func cellFrameOfIndex(index:NSInteger) -> CGRect{
-        return CGRectZero
+        return .zero
     }
     
     
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        self.backgroundColor = UIColor.lightGrayColor();
+        self.backgroundColor = .lightGray
         
         let numberOfCells = self.cellFrames.count
         
@@ -256,13 +251,13 @@ class JYTagView: UIScrollView {
             
             var cell:JYTagViewCell? = self.displayingCells[i]
             
-            if isInScreen(cellFrame) {
+            if isInScreen(frame: cellFrame) {
                 if cell == nil {
-                    cell = self.dataSource_JY?.tagView(self, cellAtIndex: i)
+                    cell = self.dataSource_JY?.tagView(tagView: self, cellAtIndex: i)
                 }
                 cell!.frame = cellFrame
                 cell!.layer.borderWidth = 2.0
-                cell!.layer.borderColor = UIColor.blackColor().CGColor
+                cell!.layer.borderColor = UIColor.black.cgColor
 //                cell!.clipsToBounds = true
                 cell!.layer.cornerRadius = 8.0
                 self.addSubview(cell!)
@@ -276,7 +271,7 @@ class JYTagView: UIScrollView {
                     
                     cell!.removeFromSuperview()
                     
-                    self.displayingCells.removeValueForKey(i)
+                    self.displayingCells.removeValue(forKey: i)
                     
                     self.reusableCells.insert(cell!)
                 }
@@ -303,7 +298,7 @@ class JYTagView: UIScrollView {
      *  是否在屏幕上
      */
     private func isInScreen(frame:CGRect) -> Bool{
-        return CGRectGetMaxY(frame) > self.contentOffset.y && CGRectGetMaxY(frame) < self.contentOffset.y + self.frame.size.height
+        return frame.maxY > self.contentOffset.y && frame.maxY < self.contentOffset.y + self.frame.size.height
     }
     
     
@@ -311,46 +306,36 @@ class JYTagView: UIScrollView {
      *  cell height
      */
     private func heightAtIndex(index:NSInteger) -> CGFloat {
-        
-        if ((self.delegate_JY?.tagView(self, heightForRowInIndex: index)) != nil){
-            return (self.delegate_JY?.tagView(self, heightForRowInIndex: index))!
-        }
-        return kJYTagviewDefaultCellHeight
+        return self.delegate_JY?.tagView(tagView: self, heightForRowInIndex: index) ?? kJYTagviewDefaultCellHeight
     }
     
     /** 获得每一个cell的宽度 */
     private func widthAtIndex(index:NSInteger) -> CGFloat {
-        if ((self.delegate_JY?.tagView(self, widthForRowInIndex: index)) != nil){
-            return (self.delegate_JY?.tagView(self, widthForRowInIndex: index))!
-        }
-        return kJYTagviewDefaultCellWidth
+        return self.delegate_JY?.tagView(tagView: self, widthForRowInIndex: index) ?? kJYTagviewDefaultCellWidth
     }
 
     /**  headerview*/
     private func headerViewInTagview() -> UIView? {
-        if ((self.dataSource_JY?.headerViewInTagView(self)) != nil) {
-            return self.dataSource_JY?.headerViewInTagView(self)
-        }
-        return nil
+        return self.dataSource_JY?.headerViewInTagView(tagView: self)
     }
     
     /**  footerView*/
     private func footerViewInTagview() -> UIView? {
-        if ((self.dataSource_JY?.footerViewInTagView(self)) != nil) {
-            return self.dataSource_JY?.footerViewInTagView(self)
+        if ((self.dataSource_JY?.footerViewInTagView(tagView: self)) != nil) {
+            return self.dataSource_JY?.footerViewInTagView(tagView: self)
         }
         return nil
     }
     
     // MARK: 事件处理
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        
+
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         let touch = touches.first!
-        let point = touch.locationInView(self)
+        let point = touch.location(in: self)
         
         for displayingCell in self.displayingCells {
-            if CGRectContainsPoint(displayingCell.1.frame, point) {
-                self.delegate_JY?.tagView(self, didSelectAtIndex: displayingCell.0)
+            if displayingCell.1.frame.contains(point) {
+                self.delegate_JY?.tagView(tagView: self, didSelectAtIndex: displayingCell.0)
             }
         }
     }

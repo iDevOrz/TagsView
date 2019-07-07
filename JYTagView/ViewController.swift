@@ -23,12 +23,12 @@ class ViewController: UIViewController ,JYTagviewDataSource ,JYTagviewDelegate{
         tagsView.dataSource_JY = self
         view.addSubview(tagsView)
         
-        let file = NSBundle.mainBundle().pathForResource("tags", ofType: "json")
+        let file = Bundle.main.path(forResource: "tags", ofType: "json")
         
         let dataArr = NSArray(contentsOfFile: file!)
         
         for data in dataArr! {
-            let model = JYTagModel.tag(data as! [String : AnyObject])
+            let model = JYTagModel.tag(dict: data as! [String : AnyObject])
             self.tagModels.append(model)
         }
         tagsView.reloadData()
@@ -51,7 +51,7 @@ extension ViewController {
     
     func tagView(tagView:JYTagView, cellAtIndex index:Int) -> JYTagViewCell{
         
-        var cell:JYTagViewCell? = tagsView.dequeueReusableCellWithIdentifier(self.identifier)
+        var cell:JYTagViewCell? = tagsView.dequeueReusableCellWithIdentifier(identifier: self.identifier)
         
         if cell == nil {
             cell = JYTagViewCell.init(identifier: self.identifier)
@@ -64,13 +64,13 @@ extension ViewController {
     //@optional
     func headerViewInTagView(tagView:JYTagView) -> UIView{
         
-        let label = UILabel.init(frame: CGRectMake(0, 0, self.view.bounds.width, 50))
+        let label = UILabel.init(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width, height: 50))
         
-        label.backgroundColor = UIColor.lightGrayColor()
+        label.backgroundColor = .lightGray
         
-        label.textColor = UIColor.whiteColor()
+        label.textColor = .white
         
-        label.textAlignment = .Center
+        label.textAlignment = .center
         
         label.text = "我是头视图"
         
@@ -79,13 +79,13 @@ extension ViewController {
     
     func footerViewInTagView(tagView:JYTagView) -> UIView{
         
-        let label = UILabel.init(frame: CGRectMake(0, 0, self.view.bounds.width, 50))
+        let label = UILabel.init(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width, height: 50))
         
-        label.backgroundColor = UIColor.grayColor()
+        label.backgroundColor = .gray
         
-        label.textColor = UIColor.whiteColor()
+        label.textColor = .white
         
-        label.textAlignment = .Center
+        label.textAlignment = .center
         
         label.text = "我是尾视图"
         
@@ -106,10 +106,10 @@ extension ViewController {
 //        boundingRectWithSize
         
         let label = UILabel()
-        label.font = UIFont.systemFontOfSize(15)
+        label.font = UIFont.systemFont(ofSize: 15)
         label.text = text
         label.sizeToFit()
-        let width =  CGRectGetMaxX(label.frame)
+        let width = label.frame.maxX
         return width
     }
     
@@ -120,12 +120,12 @@ extension ViewController {
         let model = self.tagModels[index]
         
         if #available(iOS 8.0, *) {
-            let alertView = UIAlertController.init(title: "提示", message: "点击了\(model.tagname!)", preferredStyle:.Alert)
-            let cancelAction = UIAlertAction.init(title: "取消", style: .Cancel, handler: nil)
+            let alertView = UIAlertController.init(title: "提示", message: "点击了\(model.tagname!)", preferredStyle:.alert)
+            let cancelAction = UIAlertAction.init(title: "取消", style: .cancel, handler: nil)
             
             alertView.addAction(cancelAction)
             
-            self.presentViewController(alertView, animated: true, completion: nil)
+            self.present(alertView, animated: true, completion: nil)
         } else {
             // Fallback on earlier versions
         }        

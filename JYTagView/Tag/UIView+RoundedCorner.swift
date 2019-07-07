@@ -18,15 +18,15 @@ extension UIView{
         
     }
     
-    func setCornerRadius(radius:CGFloat, borderColor:UIColor, borderWidth:CGFloat, backgroundColor:UIColor, backgroundImage:UIImage, contentMode:UIViewContentMode){
+    func setCornerRadius(radius:CGFloat, borderColor:UIColor, borderWidth:CGFloat, backgroundColor:UIColor, backgroundImage:UIImage, contentMode:UIView.ContentMode){
         
     }
     
-    func setCornerRadius(radius:Radius, borderColor:UIColor, borderWidth:CGFloat, backgroundColor:UIColor, backgroundImage:UIImage, contentMode:UIViewContentMode){
+    func setCornerRadius(radius:Radius, borderColor:UIColor, borderWidth:CGFloat, backgroundColor:UIColor, backgroundImage:UIImage, contentMode:UIView.ContentMode){
 
     }
     
-    func setCornerRadius(radius:Radius, borderColor:UIColor, borderWidth:CGFloat, backgroundColor:UIColor, backgroundImage:UIImage, contentMode:UIViewContentMode, size:CGSize){
+    func setCornerRadius(radius:Radius, borderColor:UIColor, borderWidth:CGFloat, backgroundColor:UIColor, backgroundImage:UIImage, contentMode:UIView.ContentMode, size:CGSize){
         
     }
     
